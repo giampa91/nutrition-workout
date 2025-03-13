@@ -3,15 +3,8 @@ package com.nutrition.workout.workoutservice.domain;
 public class Exercise {
 
     private Long id;
-    private String name;
-    private String description;
-
-    // Constructor, Getters, Setters, etc.
-    public Exercise(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
+    private Integer repetitions;
+    private Integer sets;
 
     public Long getId() {
         return id;
@@ -21,29 +14,20 @@ public class Exercise {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getRepetitions() {
+        return repetitions;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRepetitions(Integer repetitions) {
+        this.repetitions = repetitions;
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getSets() {
+        return sets;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Exercise{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public void setSets(Integer sets) {
+        this.sets = sets;
     }
 }
 

@@ -1,5 +1,8 @@
 package com.nutrition.workout.workoutexecutionservice.DTOs;
 
+import com.nutrition.workout.workoutexecutionservice.domain.ExerciseLog;
+import com.nutrition.workout.workoutexecutionservice.domain.SessionLog;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,7 +14,7 @@ public class WorkoutExecutionDTO {
     private String status;  // Assigned, Ongoing, Done, Refused
     private LocalDateTime startDate;  // Start date and time of the workout
     private LocalDateTime endDate;  // End date and time of the workout
-    private List<ExerciseLogDTO> exerciseLogDTOS;  // List of exercises performed
+    private List<SessionLogDTO> sessionLogDTOs;  // List of exercises performed
 
     public Long getId() {
         return id;
@@ -61,11 +64,11 @@ public class WorkoutExecutionDTO {
         this.endDate = endDate;
     }
 
-    public List<ExerciseLogDTO> getExerciseLogs() {
-        return exerciseLogDTOS;
+    public List<SessionLogDTO> getSessionLogDTOs() {
+        return sessionLogDTOs;
     }
 
-    public void setExerciseLogs(List<ExerciseLogDTO> exerciseLogDTOS) {
-        this.exerciseLogDTOS = exerciseLogDTOS;
+    public void setSessionLogDTOs(List<SessionLogDTO> sessionLogDTOs) {
+        this.sessionLogDTOs = sessionLogDTOs;
     }
 }

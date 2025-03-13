@@ -1,18 +1,23 @@
 package com.nutrition.workout.workoutservice.domain;
 
-import com.nutrition.workout.workoutservice.DTOs.UserDTO;
-
 import java.util.List;
 
-public class WorkoutProgram {
+public class Session {
 
     private Long id;
     private String name;
     private String description;
-    private List<String> assignedUsers;
-    private List<Session> sessions;
+    private List<Exercise> exercises; // List of exercises in this session
     private Long createdAt;
     private Long updatedAt;
+
+    // Constructor, Getters, Setters
+    public Session(Long id, String name, String description, List<Exercise> exercises) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.exercises = exercises;
+    }
 
     public Long getId() {
         return id;
@@ -38,12 +43,12 @@ public class WorkoutProgram {
         this.description = description;
     }
 
-    public List<Session> getSessions() {
-        return sessions;
+    public List<Exercise> getExercises() {
+        return exercises;
     }
 
-    public void setSessions(List<Session> sessions) {
-        this.sessions = sessions;
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
     }
 
     public Long getCreatedAt() {
@@ -61,13 +66,4 @@ public class WorkoutProgram {
     public void setUpdatedAt(Long updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    public List<String> getAssignedUsers() {
-        return assignedUsers;
-    }
-
-    public void setAssignedUsers(List<String> assignedUsers) {
-        this.assignedUsers = assignedUsers;
-    }
 }
-

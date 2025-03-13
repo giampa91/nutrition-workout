@@ -1,45 +1,44 @@
 package com.nutrition.workout.workoutservice;
 
 import com.nutrition.workout.workoutservice.DTOs.WorkoutProgramDTO;
-import com.nutrition.workout.workoutservice.domain.WorkoutProgram;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("workout/api/v1/workout-programs")
 public class WorkoutProgramController {
 
+    // Create a new workout program
     @PostMapping
-    public ResponseEntity<WorkoutProgram> createWorkoutProgram(@RequestBody WorkoutProgramDTO workoutProgramDTO) {
-        // Create the workout program
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<WorkoutProgramDTO> createWorkoutProgram(@RequestBody WorkoutProgramDTO workoutProgramDTO) {
+        // Logic for creating a workout program would go here (e.g., save to DB)
+        WorkoutProgramDTO createdWorkoutProgram = new WorkoutProgramDTO(); // Replace with actual logic
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdWorkoutProgram);
     }
 
-    @PostMapping("/{userId}/assign")
-    public ResponseEntity<Void> assignWorkoutProgramToUser(
-            @PathVariable Long userId, @RequestParam Long workoutProgramId) {
-        // Assign the workout program to the user
-        return ResponseEntity.ok().build();
+    // Get a specific workout program by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<WorkoutProgramDTO> getWorkoutProgram(@PathVariable Long id) {
+        // Logic to fetch workout program by ID would go here
+        WorkoutProgramDTO workoutProgram = new WorkoutProgramDTO(); // Replace with actual logic
+        return ResponseEntity.status(HttpStatus.OK).body(workoutProgram);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<WorkoutProgramDTO> getWorkoutProgramForUser(@PathVariable Long userId) {
-        // Get the workout program assigned to this user
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/pt/{ptId}")
-    public ResponseEntity<List<WorkoutProgramDTO>> getAllWorkoutProgramsForPT(@PathVariable Long ptId) {
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/{workoutProgramId}")
+    // Update an existing workout program
+    @PutMapping("/{id}")
     public ResponseEntity<WorkoutProgramDTO> updateWorkoutProgram(
-            @PathVariable Long workoutProgramId, @RequestBody WorkoutProgramDTO workoutProgramDTO) {
-        // Update the workout program
-        return ResponseEntity.ok().build();
+            @PathVariable Long id, @RequestBody WorkoutProgramDTO workoutProgramDTO) {
+        // Logic to update a workout program would go here
+        WorkoutProgramDTO updatedWorkoutProgram = new WorkoutProgramDTO(); // Replace with actual logic
+        return ResponseEntity.status(HttpStatus.OK).body(updatedWorkoutProgram);
+    }
+
+    // Delete a workout program
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteWorkoutProgram(@PathVariable Long id) {
+        // Logic to delete workout program by ID would go here
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -11,7 +11,7 @@ public class WorkoutProgramDTO {
     private String description;
     private UserDTO pt; // Assuming PersonalTrainer is another class
     private List<UserDTO> assignedUsers; // List of users assigned to this workout
-    private List<Exercise> exercises; // List of exercises in this program
+    private List<SessionDTO> sessions; // List of exercises in this program
     private Long createdAt;
     private Long updatedAt;
 
@@ -55,14 +55,6 @@ public class WorkoutProgramDTO {
         this.assignedUsers = assignedUsers;
     }
 
-    public List<Exercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
-    }
-
     public Long getCreatedAt() {
         return createdAt;
     }
@@ -77,6 +69,14 @@ public class WorkoutProgramDTO {
 
     public void setUpdatedAt(Long updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<SessionDTO> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<SessionDTO> sessions) {
+        this.sessions = sessions;
     }
 }
 
