@@ -1,6 +1,6 @@
-package com.nutrition.workout.userservice.domain;
+package com.nutrition.workout.userservice.DTOs;
 
-public class User {
+public class UserDTO {
     private Long id;
     private String firstName;
     private String lastName;
