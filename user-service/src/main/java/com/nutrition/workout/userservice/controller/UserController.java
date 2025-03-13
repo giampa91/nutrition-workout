@@ -1,6 +1,7 @@
 package com.nutrition.workout.userservice.controller;
 
 import com.nutrition.workout.userservice.domain.User;
+import com.nutrition.workout.userservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,51 +13,45 @@ import java.util.Map;
 @RequestMapping("users/api/v1/users")
 public class UserController {
 
-    // In-memory data store for users
-    private final Map<Long, User> userMap = new HashMap<>();
-    private Long idCounter = 1L;
+    private final UserService userService;
+
+    // Constructor injection for UserService
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     // Create a new user
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        user.setId(idCounter++);
-        userMap.put(user.getId(), user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
     // Get user by ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userMap.get(id);
+        User user = userService.getUser(id);
         return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     // Get all users
     @GetMapping
-    public ResponseEntity<String> getAllUsers() {
-
-        //return ResponseEntity.ok(userMap);
-        return ResponseEntity.ok().body("test");
+    public ResponseEntity<Map<Long, User>> getAllUsers() {
+        Map<Long, User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
     // Update user details
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        User existingUser = userMap.get(id);
-        if (existingUser != null) {
-            existingUser.setFirstName(user.getFirstName());
-            existingUser.setLastName(user.getLastName());
-            existingUser.setEmail(user.getEmail());
-            existingUser.setRole(user.getRole());
-            return ResponseEntity.ok(existingUser);
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        User updatedUser = userService.updateUser(id, user);
+        return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     // Delete a user
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        boolean isDeleted = userMap.remove(id) != null;
+        boolean isDeleted = userService.deleteUser(id);
         return isDeleted ? ResponseEntity.noContent().build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

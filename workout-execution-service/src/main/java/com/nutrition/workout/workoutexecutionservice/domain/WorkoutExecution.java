@@ -11,7 +11,7 @@ public class WorkoutExecution {
     private String status;  // Assigned, Ongoing, Done, Refused
     private LocalDateTime startDate;  // Start date and time of the workout
     private LocalDateTime endDate;  // End date and time of the workout
-    private List<SessionLog> exerciseLogs;  // List of exercises performed
+    private List<SessionLog> sessionLogs;  // List of exercises performed
 
     public Long getId() {
         return id;
@@ -61,11 +61,11 @@ public class WorkoutExecution {
         this.endDate = endDate;
     }
 
-    public List<SessionLog> getExerciseLogs() {
-        return exerciseLogs;
+    public List<SessionLog> getSessionLogs() {
+        return sessionLogs;
     }
 
-    public void setExerciseLogs(List<SessionLog> exerciseLogs) {
-        this.exerciseLogs = exerciseLogs;
+    public void setSessionLogs(List<SessionLog> sessionLogs) {
+        this.sessionLogs = sessionLogs;
     }
 }
