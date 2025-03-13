@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("users/api/v1/users")
 public class UserController {
 
     // In-memory data store for users
@@ -33,8 +33,10 @@ public class UserController {
 
     // Get all users
     @GetMapping
-    public ResponseEntity<Map<Long, User>> getAllUsers() {
-        return ResponseEntity.ok(userMap);
+    public ResponseEntity<String> getAllUsers() {
+
+        //return ResponseEntity.ok(userMap);
+        return ResponseEntity.ok().body("test");
     }
 
     // Update user details

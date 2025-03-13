@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/workout-execution")
+@RequestMapping("workout-execution/api/v1/workout-execution")
 public class WorkoutExecutionController {
 
     // In-memory storage to simulate database

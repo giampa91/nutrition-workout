@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/workout-programs")
+@RequestMapping("workout/api/v1/workout-programs")
 public class WorkoutProgramController {
 
     @PostMapping
