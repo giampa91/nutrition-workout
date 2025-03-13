@@ -1,42 +1,42 @@
 package com.nutrition.workout.userservice.domain;
 
+import java.util.List;
+
 public class User {
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String role;  // Example: "PT" (Personal Trainer), "Athlete"
+    private CommonUser commonUser;
+    public String role;
+    private List<User> users;
 
     public Long getId() {
-        return id;
+        return commonUser.getId();
     }
 
     public void setId(Long id) {
-        this.id = id;
+        commonUser.setId(id);
     }
 
     public String getFirstName() {
-        return firstName;
+        return commonUser.getFirstName();
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        commonUser.setFirstName(firstName);
     }
 
     public String getLastName() {
-        return lastName;
+        return commonUser.getLastName();
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        commonUser.setLastName(lastName);
     }
 
     public String getEmail() {
-        return email;
+        return commonUser.getEmail();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        commonUser.setEmail(email);
     }
 
     public String getRole() {
@@ -46,5 +46,12 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-}
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+}

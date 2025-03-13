@@ -37,7 +37,6 @@ public class UserService {
             existingUser.setFirstName(user.getFirstName());
             existingUser.setLastName(user.getLastName());
             existingUser.setEmail(user.getEmail());
-            existingUser.setRole(user.getRole());
             return existingUser;
         }
         return null;
